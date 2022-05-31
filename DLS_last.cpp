@@ -66,7 +66,7 @@ int main() {
 			for (int p = 0; p < proc; ++p) {
 				double dl = 0;
 				dl += sl[v];
-				dl += W[p][v] - med[v];
+				dl += med[v] - W[p][v];
 				// EST calc
 				double est = 0;
 				for (int i = 0; i < size; ++i) {
@@ -108,8 +108,8 @@ int main() {
 					}
 					est = max(est, res);
 				}
-				if (est < est_curr) {
-					est_curr = est;
+				if (est + W[p][v] < est_curr) {
+					est_curr = est + W[p][v];
 					P = p;
 				}
 			}
